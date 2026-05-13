@@ -3800,7 +3800,7 @@
 			(uuid "6305596c-804b-4001-a1a8-3129bd4953d4")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "R10")
 					(unit 1)
@@ -3877,7 +3877,7 @@
 			(uuid "fd93e87f-ea1c-4242-b72b-d3964adc1ab7")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "#PWR038")
 					(unit 1)
@@ -3974,7 +3974,7 @@
 			(uuid "df7eea39-17dc-4260-8760-5ee0b654c327")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "J3")
 					(unit 1)
@@ -4052,7 +4052,7 @@
 			(uuid "c6832082-b09c-45fd-abf7-0bcffa7d4216")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "#PWR031")
 					(unit 1)
@@ -4130,7 +4130,7 @@
 			(uuid "ef39208d-570e-4eb8-bcf3-169688ece664")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "#PWR033")
 					(unit 1)
@@ -4208,7 +4208,7 @@
 			(uuid "1af3f679-db41-48b5-9124-278741294e84")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "#PWR048")
 					(unit 1)
@@ -4286,7 +4286,7 @@
 			(uuid "79d6a461-35a0-4a21-9794-16494e501628")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "#PWR032")
 					(unit 1)
@@ -4565,7 +4565,7 @@
 			(uuid "934b09a8-2917-4877-a195-70d681ba14e3")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "R1")
 					(unit 1)
@@ -4844,7 +4844,7 @@
 			(uuid "c0819f35-12b8-4a02-808c-4cb31cb09bd8")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "R6")
 					(unit 1)
@@ -5036,7 +5036,7 @@
 			(uuid "03211843-45e7-4cb9-b7fc-3671ba02a6b5")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "D3")
 					(unit 1)
@@ -5304,7 +5304,7 @@
 			(uuid "d7542d4b-df8c-4b2d-955e-c513ab998ad0")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "R4")
 					(unit 1)
@@ -5382,7 +5382,7 @@
 			(uuid "53e39810-5044-43aa-b5ab-63adfd72dae5")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "#PWR034")
 					(unit 1)
@@ -5460,7 +5460,7 @@
 			(uuid "c18a20e4-f0e7-4a51-99f3-2a58aeb6e4c7")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "#PWR054")
 					(unit 1)
@@ -5538,7 +5538,7 @@
 			(uuid "595ed0dd-3e39-4a2d-b505-8b6cda671349")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "#PWR037")
 					(unit 1)
@@ -5616,7 +5616,7 @@
 			(uuid "88e05e5c-e1ed-454c-848b-fda7df1089ed")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "#PWR052")
 					(unit 1)
@@ -5786,7 +5786,7 @@
 			(uuid "7e67a275-9884-4f7f-997d-55bc194dc4dc")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "U1")
 					(unit 1)
@@ -5865,7 +5865,7 @@
 			(uuid "1defdc8f-6b36-4cc7-a6b8-49ada7174480")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "#PWR046")
 					(unit 1)
@@ -6112,7 +6112,7 @@
 			(uuid "1b4a101a-2e93-4db0-b5a2-f412c6d6404f")
 		)
 		(instances
-			(project "MMS3_hat_templates"
+			(project "MMS3_hat_relay"
 				(path "/6596548a-44e0-46d8-8624-fd71cf4a3e17/ec6d73af-72b0-4068-85fb-cca3c5143749"
 					(reference "C1")
 					(unit 1)

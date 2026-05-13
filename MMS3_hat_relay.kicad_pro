@@ -1245,13 +1245,13 @@
         "uuid": "6596548a-44e0-46d8-8624-fd71cf4a3e17"
       }
     ],
-    "used_designators": "D9-13,R16,R20,R23,R26,R29-34",
+    "used_designators": "#PWR35-36,#PWR40,#PWR47,#PWR49,D9-13,R15-16,R19-20,R22-23,R25-26,R28-34",
     "variants": []
   },
   "sheets": [
     [
       "6596548a-44e0-46d8-8624-fd71cf4a3e17",
-      "MMS3_hat_templates"
+      "MMS3_hat_relay"
     ],
     [
       "fdb595ff-e94b-4e80-8fe7-e7d367588ab2",
