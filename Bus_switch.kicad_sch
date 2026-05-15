@@ -2375,13 +2375,13 @@
 		(at 128.27 114.3)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "25378167-81d3-467a-b2a7-289fb576769f")
+		(uuid "03abb9e7-5fa2-4894-b7a6-47c7538a7b25")
 	)
 	(junction
 		(at 134.62 114.3)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "8ab2908e-e4a0-4421-bcea-439c4de5b098")
+		(uuid "233b418b-8c9d-488d-92b8-64344c4a0db2")
 	)
 	(no_connect
 		(at 160.02 101.6)

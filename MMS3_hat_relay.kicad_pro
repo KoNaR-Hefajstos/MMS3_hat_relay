@@ -513,7 +513,7 @@
         "wire_width": 6
       },
       {
-        "clearance": 0.8,
+        "clearance": 2.0,
         "name": "230V",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
         "priority": 0,
@@ -613,64 +613,49 @@
         "50V"
       ],
       "/Relay 1/COM": [
-        "230V",
-        "make_it_fast_net"
+        "230V"
       ],
       "/Relay 1/NC": [
-        "230V",
-        "make_it_fast_net"
+        "230V"
       ],
       "/Relay 1/NO": [
-        "230V",
-        "make_it_fast_net"
+        "230V"
       ],
       "/Relay 2/COM": [
-        "230V",
-        "make_it_fast_net"
+        "230V"
       ],
       "/Relay 2/NC": [
-        "230V",
-        "make_it_fast_net"
+        "230V"
       ],
       "/Relay 2/NO": [
-        "230V",
-        "make_it_fast_net"
+        "230V"
       ],
       "/Relay 3/COM": [
-        "230V",
-        "make_it_fast_net"
+        "230V"
       ],
       "/Relay 3/NC": [
-        "230V",
-        "make_it_fast_net"
+        "230V"
       ],
       "/Relay 3/NO": [
-        "230V",
-        "make_it_fast_net"
+        "230V"
       ],
       "/Relay 4/COM": [
-        "230V",
-        "make_it_fast_net"
+        "230V"
       ],
       "/Relay 4/NC": [
-        "230V",
-        "make_it_fast_net"
+        "230V"
       ],
       "/Relay 4/NO": [
-        "230V",
-        "make_it_fast_net"
+        "230V"
       ],
       "/Relay 5/COM": [
-        "230V",
-        "make_it_fast_net"
+        "230V"
       ],
       "/Relay 5/NC": [
-        "230V",
-        "make_it_fast_net"
+        "230V"
       ],
       "/Relay 5/NO": [
-        "230V",
-        "make_it_fast_net"
+        "230V"
       ],
       "/S1": [
         "make_it_fast_net"
@@ -1245,7 +1230,7 @@
         "uuid": "6596548a-44e0-46d8-8624-fd71cf4a3e17"
       }
     ],
-    "used_designators": "#PWR35-36,#PWR40,#PWR47,#PWR49,D9-13,R15-16,R19-20,R22-23,R25-26,R28-34",
+    "used_designators": "J11-15,CN1-5,RELAY1-5",
     "variants": []
   },
   "sheets": [

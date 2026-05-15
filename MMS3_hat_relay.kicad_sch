@@ -9968,7 +9968,7 @@
 		)
 		(uuid "0b660107-df17-479d-87c6-912cd3038e20")
 	)
-	(label "S1"
+	(label "S2"
 		(at 226.06 113.03 180)
 		(effects
 			(font
@@ -9976,9 +9976,9 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "169458c6-7d7f-4a7e-b1f3-6000614d0c5a")
+		(uuid "34efb0a9-4807-4659-981b-f788f0fa218f")
 	)
-	(label "S3"
+	(label "S4"
 		(at 226.06 118.11 180)
 		(effects
 			(font
@@ -9986,9 +9986,9 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "416e6788-c9be-4ceb-9d75-6b071e001c3f")
+		(uuid "6eaf69a1-396b-4f66-b69a-0d36dbb4bbf8")
 	)
-	(label "S4"
+	(label "S5"
 		(at 226.06 120.65 180)
 		(effects
 			(font
@@ -9996,27 +9996,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "43049ad6-02bb-475b-b71f-350ea44f5b8d")
-	)
-	(label "S2"
-		(at 226.06 115.57 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "5ee584ae-9ddd-434b-81da-3bc5a7d47e51")
-	)
-	(label "S5"
-		(at 226.06 123.19 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "6dcd7029-5219-4f1d-bbac-721e4e457bf3")
+		(uuid "7296b168-21f7-42c3-a190-9e5afaabc142")
 	)
 	(label "S1"
 		(at 27.94 111.76 180)
@@ -10027,6 +10007,16 @@
 			(justify right bottom)
 		)
 		(uuid "73821a97-4788-483f-b0a1-22eef70252bd")
+	)
+	(label "S3"
+		(at 226.06 115.57 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7d89185c-5a23-48da-bbc3-2b2d9cf3f019")
 	)
 	(label "S4"
 		(at 27.94 140.97 180)
@@ -10057,6 +10047,16 @@
 			(justify right bottom)
 		)
 		(uuid "d46d2cea-dd47-4c3c-8a1b-761ed28c206b")
+	)
+	(label "S1"
+		(at 226.06 123.19 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "f142473f-c3d4-4047-af44-7bcfc72a1647")
 	)
 	(symbol
 		(lib_id "PCM_JLCPCB-Manufacturing:Tooling Hole, PCM_JLCPCB, 1.152mm")
