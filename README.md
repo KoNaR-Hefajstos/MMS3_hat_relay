@@ -1,53 +1,104 @@
-# Zestaw template'ów kompatybilnych z płytką MMS3 i systemem ChainBus
+# Dokumentacja Hat'a: 5-kanałowy moduł przekaźnikowy I2C (ChainBus)
 
-### Tworzenie własnego hata
-<p> Żeby stworzyć własnego hata musisz zrobić fork'a tego repo i na nim zaimplementować to co potrzebujesz
-<p> 0. Zobacz na fork'i czy ktoś już nie zrobił płytki której potrzebujesz, jeśli nie to
-<p> 1. Wejdź na github'a template'a i kliknij "fork"
+## Sekcja 1: Dokumentacja Hat'a
 
-![punkt 1](readme_zdjecia/fork.png)
-<p>2. Zmień nazwe i zrób fork'a
-<p>3. Sklonuj repo swojego właśnie zrobionego forka
-<p>4. Usuń niepotrzebne pliki z template'a (zdjęcia), zaktualizuj readme, zmień nazwy plików .kicad z MMS_hat_templates na zgodną z twoim projektem i zmień nazwy w tabelce w prawym dolnym rogu
-<p>5. Gotowe, możesz push'ować nowe commity do swojego fork'a
+### Krótki opis projektu
+Moduł realizuje funkcję 5-kanałowego sterownika przekaźników elektromagnetycznych zgodnego ze standardem ChainBus. Umożliwia przełączanie obciążeń prądu przemiennego (AC) oraz stałego (DC) o parametrach do 230V AC / 5A na kanał. Sercem modułu jest mikrokontroler CH32V003, który pośredniczy w komunikacji jako programowalny ekspander portów sterowany przez magistralę I2C. W celu zwiększenia bezpieczeństwa i odporności na zakłócenia, każdy kanał wykonawczy posiada niezależną optoizolację.
 
-### Łączenie hat'ów
-<p> Na jednym MMS3 można zamontować do 8 hatów. Łączy się przez wpinianie kolejnego Hat'a do złącza ChainBus wcześniejszego
+### Zgodność ze standardem ChainBus
 
-### Komunikacja oraz sterowanie
-<p> ChainBus jest w pełni cyfrowy. GPIO nie sterują bezpośrednio funkcjonalnością, tylko poprzez magistrale komunikacyjne i IC.
-<p> Znaczy to, że zamiast używać GPIO do przełączania LED'a, odczytywania krańcówek czy zadawania PWM'a musisz zaimplementować jakiegoś IC który to robi. Np:
-<p> MCU --> expander gpio po I2C --> Dioda LED
-<p> MCU wybiera do którego hat'a się podpina przy użyciu bus switcha. To znaczy że magistrale I2C, SPI i UART są niezależne od siebie na każdym hat'ie (nie musisz się martwić o zajęte adresy I2C). Ale musisz pamiętać żeby podpinać sie z busa Chainbus a nie Chainbus_IN (czyli tego za bus swichem)
-<p> Dodatkowo w celu identyfikacji każdego hat'a jest na nim pamięć EEPROM po I2C. Możesz użyć np. M24C64-W z obudową SOIC-8 i addresie 1010000 (przy A0 A1 A2 zwartych do GND)
+* ✅ Używa złącza ChainBus, nie zmienia jego miejsca ani pinoutu.
+* ✅ Używa wyłącznie interfejsu I2C do komunikacji zewnętrznej (działa w trybie Slave, nie inicjuje transmisji jako Master).
+* ✅ Spełnia wymagania mechaniczne standardu (wymiary PCB, rozstaw otworów).
+* ❌ Pobiera maksymalny prąd zgodny z ilością na jednego hat'a:  Jeden aktywny przekaźnik pobiera ok. 80 mA z linii 5V. Przy załączeniu wszystkich 5 kanałów jednocześnie hat pobiera **400 mA**, a max to 125mA.
+* ✅ Obsługuje napięcie wejściowe BRD_VIN do wartości 48V.
+
+### Komunikacja i adresowanie
+
+#### Adresacja I2C
+Komunikacja z modułem odbywa się za pomocą magistrali I2C.
+
+| Układ (IC)   | Funkcja                                  |       Adres I2C (7-bit)        |
+| :----------- | :--------------------------------------- | :----------------------------: |
+| **CH32V003** | Mikrokontroler (programowalny ekspander) | *Definiowany w oprogramowaniu* |
+| **M24C64-W** | Pamięć Identyfikajcji EEPROM             |       `1010000b` (0x50)        |
+
+*Uwaga: Adres I2C mikrokontrolera CH32V003 jest konfigurowany na poziomie kodu źródłowego (firmware), co pozwala uniknąć konfliktów adresacji przy stosowaniu kilku takich samych modułów w jednym stosie.*
+
+### Pinout mikrokontrolera CH32V003
+Połączenia wewnętrzne sygnałów sterujących przekaźnikami oraz magistrali I2C:
+
+| Pin MCU | Rola / Nazwa sygnału | Opis funkcjonalny                                      |
+| :------ | :------------------- | :----------------------------------------------------- |
+| **PC1** | I2C SDA              | Linia danych magistrali I2C (podłączona do ChainBus)   |
+| **PC2** | I2C SCL              | Linia zegarowa magistrali I2C (podłączona do ChainBus) |
+| **PC7** | K1                   | Sterowanie przekaźnikiem 1 (CN1)                       |
+| **PC3** | K2                   | Sterowanie przekaźnikiem 2 (CN2)                       |
+| **PC4** | K3                   | Sterowanie przekaźnikiem 3 (CN3)                       |
+| **PC5** | K4                   | Sterowanie przekaźnikiem 4 (CN4)                       |
+| **PC6** | K5                   | Sterowanie przekaźnikiem 5 (CN5)                       |
+
+### Pinout złączy wykonawczych
+
+Moduł wyposażony jest w 5 złączy śrubowych lub JST (oznaczonych jako CN1 do CN5) dedykowanych do przełączania obciążeń.
+
+| Złącze    | Opis pinu               | Funkcja                                                                                                                    |
+| :-------- | :---------------------- | :------------------------------------------------------------------------------------------------------------------------- |
+| **CN1-5** | Pin 1<br>Pin 2<br>Pin 3 | **NO** (Normally Open - normalnie otwarty)<br>**COM** (Common - wspólny)<br>**NC** (Normally Closed - normalnie zamknięty) |
+
+
+
+### Szczegółowy opis techniczny
+Hat z 5 kanałami przekaźników 5A 230VAC. Przekaźniki sa galwanicznie izolowane od MCU oraz każdy kanał ma diode LED do oznaczania swojej aktywacji.
+
+Sygnały sterowane są z mikrokontrolera CH32V003.
+
+Każdy przekaźnik pobiera po ~80mA, więc właczenie wszystkich na raz przekracza limit 1 hat'a
+
+### Gotowe arkusze hierarchiczne
+W projekcie wydzielono następujące moduły schematyczne:
+* **CH32v003** – Arkusz zawierający strukturę mikrokontrolera, oscylator, przycisk reset, złącze programowania SWD (w standardzie WCH-Link).
+
+* **Przekaźnik z optoizolacją** – Powielony pięciokrotnie schemat pojedynczego kanału wykonawczego zawierający optoizolator, tranzystor kluczujący, diodę zabezpieczającą, diodę LED sygnalizującą stan pracy oraz złącze wyjściowe CNx.
+
+---
+
+## Sekcja 2: Specyfikacja standardu ChainBus
+
+### Architektura i łączenie modułów
+Standard ChainBus umożliwia modułowe łączenie hatów. Na jednym MMS3 można zamontować pionowo **do 8 hat'ów**. Połączenie realizowane jest poprzez wpięcie złącza męskiego kolejnego hat'a w złącze żeńskie poprzedniego.
+
+### Komunikacja i sterowanie
+Magistrala ChainBus jest w pełni cyfrowa. Płyta główna nie steruje bezpośrednio sygnałami ogólnego przeznaczenia (GPIO) na poszczególnych hat'ach. Wszelkie operacje (np. obsługa diod LED, odczyt krańcówek, sterowanie przekaźnikami) muszą być realizowane przez dedykowane układy scalone (np. ekspandery portów, mikrokontrolery pomocnicze) komunikujące się przez interfejsy systemowe.
+
+Wybór aktywnego modułu realizowany jest przez układ przełącznika magistrali (bus switch) na płycie głównej. Dzięki temu linie I2C, SPI i UART są niezależne dla każdego hat'a (brak konfliktów adresów I2C między różnymi hatami).
+* **Identyfikacja:** Każdy moduł powinien posiadać pamięć EEPROM na magistrali I2C w celu identyfikacji płyty przez system - układ M24C64-W skonfigurowany na adres `1010000` przy liniach adresowych A0, A1, A2 zwartych do masy.
 
 ### Zasilanie
-<p> Przez złącze ChainBus idzie następujące zasilanie
+Złącze ChainBus dostarcza następujące linie zasilania:
 
-|          |   Napięcie    | Prąd na wszystkie haty | Prąd dla jednego hat'a |
-| -------- | :-----------: | :--------------------: | ---------------------: |
-| 5V       |      5V       |           1A           |                  125mA |
-| 12V stby |      12V      |          0.5A          |                   65mA |
-| BRD_VIN  | Od 12V do 48V |          1.5A          |                  185mA |
+| Magistrala zasilania | Napięcie znamionowe | Maksymalny prąd (łączny dla 8 hatów) | Szacowany prąd na jeden hat |
+| :------------------- | :-----------------: | :----------------------------------: | :-------------------------: |
+| **5V**               |        5.0 V        |                1.0 A                 |           125 mA            |
+| **12V stby**         |       12.0 V        |                0.5 A                 |            65 mA            |
+| **BRD_VIN**          |   12.0 V – 48.0 V   |                1.5 A                 |           185 mA            |
 
-<p> Prąd dla jednego hat'a został policzony w wypadku kiedy wszystkie 8 hat'ów jest zamontowanych. Jeśli na jeden MMS zamontujesz mniej hat'ów to każdy może pociągnąć więcej prądu.
+*   Komponenty podłączone do linii `BRD_VIN` muszą być przystosowane do pracy z napięciem od 12V do **48 V**.
 
-<p> Hat'y powinny obsługiwać do 48V z BRD_VIN. Komponenty powinny być dostosowane aż do tego napięcia.
+### Wymagania mechaniczne i złącza
+* **Wymiary PCB:** Niedozwolona jest zmiana obrysu płytki oraz położenia otworów montażowych, aby zachować kompatybilność mechaniczną.
+* **Pozycjonowanie złączy ChainBus:** Położenie złącza standardu 2x16 SMD (raster 2.54 mm) musi być zgodne z szablonem. Złącze żeńskie montowane jest na stronie FRONT, natomiast złącze męskie na stronie BACK.
+* **Interfejsy zewnętrzne:** Złącza wejścia/wyjścia oraz ewentualne wysokonapięciowe wyjścia przekaźnikowe powinny być umieszczone przy dolnej krawędzi płytki, z zachowaniem odpowiednich odstępów izolacyjnych (clearance/creepage) wymaganych przy napięciu 230V.
+* **Komponenty:** Wszystkie komponenty powinny znajdować się na stronie FRONT płytki, aby uniknąć kolizji mechanicznych z elementami sąsiadujących modułów w stosie.
 
-<p> Jeśli twoja płytka potrzebuje więcej mocy niż ile ChainBus daje, to można dodatkowo podłączyć Vin po XT60 która obsługuje około 60A.
+---
 
-### Template Mechaniczny
-<p> Nie możesz zmieniać wielkości PCB, rozstawienia otworów montażowych oraz pozycji złącz chainbus (02x16 SMD, 2.54 raster) żeby płytka była kompatybilna z ChainBus'em
-<p> Na płytce jest też złączka XT-60, ale jeśli jej nie potrzebujesz to możesz ją usunąć
+## Sekcja 3: Licencja, linki i tagi
 
-### Wyprowadzenia
-<p> Po środku płytki na górze jest złącze Chainbus. Na od front'u  jest żeńskie, na Back'u jest męskie.
-<p> Na dolnej krawędzi płytki powinny być umieszczone złącza wyjścia/wejścia i złacza XT60 jeśli ich używasz. Na prawej wszystkie elementy konfiguracyjne i debugowe (potencjometry, przyciski, LED'y).
+### Licencjonowanie projektu
 
+*   **PCB:** [CERN-OHL-W](https://ohwr.org/project/cernohl/wikis/Documents/CERN-OHL-version-2) - Umożliwia modyfikacje i sprzedaż, ale wymaga zachowania informacji o oryginalnym autorze, a udostępniane modyfikacje muszą być open source.
+*   **Software:** [MIT License](https://opensource.org/licenses/MIT) - Umożliwia modyfikacje i sprzedaż pod warunkiem dołączenia informacji o autorze. Zmiany w kodzie źródłowym nie muszą być udostępniane jako open source.
 
-
-
-<p> Domyślnie jako złącz używamy JST-XH 2.5mm. Producent mówi że obsługują do 3A
-
-### Przykładowy hat
-[Sterownik silników krokowych. Komunikacja po SPI](https://github.com/KoNaR-Hefajstos/MMS3_hat_stepper_controler)
+### Tagi projektu
+#chainbus #MMS3 #ModuCard #RelayHat #CH32V003
