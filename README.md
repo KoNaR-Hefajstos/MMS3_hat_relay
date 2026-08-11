@@ -42,7 +42,7 @@ Połączenia wewnętrzne sygnałów sterujących przekaźnikami oraz magistrali 
 
 ### Pinout złączy wykonawczych
 
-Moduł wyposażony jest w 5 złączy śrubowych lub JST (oznaczonych jako CN1 do CN5) dedykowanych do przełączania obciążeń.
+Moduł wyposażony jest w 5 złączy oznaczonych jako CN1 do CN5 podłączonych do przekaźników.
 
 | Złącze    | Opis pinu               | Funkcja                                                                                                                    |
 | :-------- | :---------------------- | :------------------------------------------------------------------------------------------------------------------------- |
